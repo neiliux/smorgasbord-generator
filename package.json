@@ -1,0 +1,13 @@
+{
+  "name": "generator-smorgasbord",
+  "version": "0.1.0",
+  "description": "Yeomen generator for a basic HTML5 development environment",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "Neil Breeden III (neil@htmlbuffet.com)",
+  "license": "MIT",
+  "dependencies": {
+    "yeoman-generator": "^0.18.9"
+  }
+}

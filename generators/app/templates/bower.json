@@ -1,0 +1,25 @@
+{
+  "name": "<%= projectName %>",
+  "version": "<%= projectVersion %>",
+  "homepage": "<%= homepageUrl %>",
+  "authors": [
+    "<%= author %>"
+  ],
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}

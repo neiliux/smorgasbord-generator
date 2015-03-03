@@ -106,6 +106,7 @@ function installNpmPackages() {
     this.npmInstall("karma-phantomjs-launcher", { 'saveDev': true });
     this.npmInstall("karma-requirejs", { 'saveDev': true });
     this.npmInstall("requirejs", { 'saveDev': true });
+    this.npmInstall('grunt-contrib-jshint', { 'saveDev': true });
 }
 
 function createGruntConfig() {
@@ -118,12 +119,14 @@ function createGruntConfig() {
         } }');
 
     this.gruntfile.insertConfig('karma', "{ unit: { configFile: 'karma.conf.js' } }");
+    this.gruntfile.insertConfig('jshint', "{ 'options': { jshintrc: '.jshintrc' }, all: ['src/**/*.js', 'test/**/*.js']}");
 
     this.gruntfile.loadNpmTasks('grunt-devserver');
     this.gruntfile.loadNpmTasks('grunt-karma');
+    this.gruntfile.loadNpmTasks('grunt-contrib-jshint');
 
-    this.gruntfile.registerTask('default', ['karma']);
-    this.gruntfile.registerTask('dev', ['karma', 'devserver']);
+    this.gruntfile.registerTask('default', ['jshint', 'karma']);
+    this.gruntfile.registerTask('dev', ['jshint', 'karma', 'devserver']);
 }
 
 function copyStaticFiles() {

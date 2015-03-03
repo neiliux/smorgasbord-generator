@@ -64,6 +64,15 @@ function installBowerDependencies() {
     userAnswers.frameworks.forEach(function(framework) {
         self.bowerInstall(framework, { 'saveDev': true });
     });
+
+    // Install JQuery even if user did not specify it,
+    // we need it for unit tests.
+    self.bowerInstall('jquery', { 'saveDev': true});
+
+    self.bowerInstall("jasmine", { 'saveDev': true});
+    self.bowerInstall("jquery", { 'saveDev': true});
+    self.bowerInstall("chai", { 'saveDev': true});
+    self.bowerInstall("chai-jquery", { 'saveDev': true});
 }
 
 function getFramework(frameworkVal) {
@@ -87,6 +96,16 @@ function mapBowerPackagesToUrls() {
 
 function installNpmPackages() {
     this.npmInstall('grunt-devserver', { 'saveDev': true });
+    this.npmInstall("grunt-bowercopy", { 'saveDev': true });
+    this.npmInstall("grunt-devserver", { 'saveDev': true });
+    this.npmInstall("grunt-karma", { 'saveDev': true });
+    this.npmInstall("jasmine-core", { 'saveDev': true });
+    this.npmInstall("karma", { 'saveDev': true });
+    this.npmInstall("karma-cli", { 'saveDev': true });
+    this.npmInstall("karma-jasmine", { 'saveDev': true });
+    this.npmInstall("karma-phantomjs-launcher", { 'saveDev': true });
+    this.npmInstall("karma-requirejs", { 'saveDev': true });
+    this.npmInstall("requirejs", { 'saveDev': true });
 }
 
 function createGruntConfig() {
@@ -103,10 +122,15 @@ function createGruntConfig() {
 }
 
 function copyStaticFiles() {
-        this.fs.copy(
-            this.templatePath('gitignore'),
-            this.destinationPath('.gitignore')
-        );
+    this.fs.copy(
+        this.templatePath('gitignore'),
+        this.destinationPath('.gitignore')
+    );
+
+    this.fs.copy(
+        this.templatePath('karma.conf.js'),
+        this.destinationPath('karma.conf.js')
+    );
 }
 
 module.exports = generators.Base.extend({

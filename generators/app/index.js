@@ -102,6 +102,13 @@ function createGruntConfig() {
     this.gruntfile.registerTask('default', ['devserver']);
 }
 
+function copyStaticFiles() {
+        this.fs.copy(
+            this.templatePath('gitignore'),
+            this.destinationPath('.gitignore')
+        );
+}
+
 module.exports = generators.Base.extend({
     constructor: function() {
        generators.Base.apply(this, arguments);
@@ -142,4 +149,7 @@ module.exports = generators.Base.extend({
            }
        );
     },
+    copyStaticFiles: function() {
+        copyStaticFiles.bind(this)();
+    }
 });

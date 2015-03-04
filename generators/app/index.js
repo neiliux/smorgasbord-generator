@@ -119,7 +119,7 @@ function createGruntConfig() {
         } }');
 
     this.gruntfile.insertConfig('karma', "{ unit: { configFile: 'karma.conf.js' } }");
-    this.gruntfile.insertConfig('jshint', "{ 'options': { jshintrc: '.jshintrc' }, all: ['src/**/*.js', 'test/**/*.js']}");
+    this.gruntfile.insertConfig('jshint', "{ 'options': { jshintrc: '.jshintrc' }, all: ['*.js', 'src/**/*.js', 'test/**/*.js']}");
 
     this.gruntfile.loadNpmTasks('grunt-devserver');
     this.gruntfile.loadNpmTasks('grunt-karma');
@@ -148,6 +148,11 @@ function copyStaticFiles() {
     this.fs.copy(
         this.templatePath('testFixture.js'),
         this.destinationPath('test/testFixtureExampleTests.js')
+    );
+
+    this.fs.copy(
+        this.templatePath('jshintrc'),
+        this.destinationPath('.jshintrc')
     );
 }
 
